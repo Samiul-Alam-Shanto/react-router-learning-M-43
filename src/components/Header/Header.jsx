@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router";
+import { NavLink } from "react-router";
 
 const Header = () => {
   return (
@@ -9,8 +9,10 @@ const Header = () => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/mobiles">Mobiles</NavLink>
         <NavLink to="/laptops">Laptops</NavLink>
-        {/* navlink dile extra ekta class dynamically add kore dey */}
+        <NavLink to="/users">Users</NavLink>
+        <NavLink to="/users2">Users2</NavLink>
       </nav>
+      {/* navlink dile extra ekta class dynamically add kore dey */}
     </div>
   );
 };
