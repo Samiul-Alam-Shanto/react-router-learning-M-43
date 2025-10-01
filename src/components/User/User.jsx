@@ -1,15 +1,20 @@
 import React, { Suspense, useState } from "react";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
 import UserDetails2 from "../UserDetails2/UserDetails2";
 
 const User = ({ user }) => {
   const { name, email, phone, id } = user;
 
   const [showInfo, setShowInfo] = useState(false);
+  const [visitHome, setVisitHome] = useState(false);
 
   const userPromise = fetch(
     `https://jsonplaceholder.typicode.com/users/${id}`
   ).then((res) => res.json());
+
+  if (visitHome) {
+    return <Navigate to="/"></Navigate>;
+  }
 
   return (
     <div className="flex flex-col border rounded-xl p-2 bg-lime-200 text-black">
@@ -26,6 +31,10 @@ const User = ({ user }) => {
           <UserDetails2 userPromise={userPromise}></UserDetails2>
         </Suspense>
       )}
+
+      <button className="text-white" onClick={() => setVisitHome(true)}>
+        Go Home
+      </button>
     </div>
   );
 };
